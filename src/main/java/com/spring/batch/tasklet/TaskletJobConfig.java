@@ -1,4 +1,4 @@
-package com.spring.batch.sample;
+package com.spring.batch.tasklet;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 public class TaskletJobConfig {
 
     private final JobRepository jobRepository;
-
     private final PlatformTransactionManager transactionManager;
 
     @Bean

@@ -1,4 +1,4 @@
-package com.spring.batch.sample;
+package com.spring.batch.tasklet;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
