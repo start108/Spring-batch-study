@@ -19,34 +19,34 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Slf4j
 @RequiredArgsConstructor
 @Configuration
-public class JpaPageJobConfig {
+public class JpaPageJobDBPrintConfig {
 
     private final JobRepository jobRepository;
     private final PlatformTransactionManager transactionManager;
     private final EntityManagerFactory entityManagerFactory;
 
-    private int chunkSize = 10;
+    private static final int chunkSize = 10;
 
     @Bean
-    public Job jpaPageJobBatchBuild() {
-        return new JobBuilder("jpaPageJobBatchBuild", jobRepository)
-                .start(jpaPageJobStepOne())
+    public Job jpaPageJobPrintBatchBuild() {
+        return new JobBuilder("jpaPageJobPrintBatchBuild", jobRepository)
+                .start(jpaPageJobPrintStep())
                 .build();
     }
 
     @Bean
-    public Step jpaPageJobStepOne() {
-        return new StepBuilder("jpaPageJobStepOne", jobRepository)
+    public Step jpaPageJobPrintStep() {
+        return new StepBuilder("jpaPageJobPrintStep", jobRepository)
                 .<Dept, Dept>chunk(chunkSize, transactionManager)
-                .reader(jpaPageJobDBItemReader())
+                .reader(jpaPageJobDBPrintItemReader())
                 .writer(jpaPageJobDBPrintItemWriter())
                 .build();
     }
 
     @Bean
-    public JpaPagingItemReader<Dept> jpaPageJobDBItemReader() {
+    public JpaPagingItemReader<Dept> jpaPageJobDBPrintItemReader() {
         return new JpaPagingItemReaderBuilder<Dept>()
-                .name("jpaPageJobDBItemReader")
+                .name("jpaPageJobDBPrintItemReader")
                 .entityManagerFactory(entityManagerFactory)
                 .pageSize(chunkSize)
                 .queryString("SELECT dept FROM Dept dept ORDER BY deptNo ASC")

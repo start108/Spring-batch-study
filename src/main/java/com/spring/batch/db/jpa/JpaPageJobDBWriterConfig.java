@@ -11,15 +11,12 @@ import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
-import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.JpaItemWriter;
 import org.springframework.batch.item.database.JpaPagingItemReader;
 import org.springframework.batch.item.database.builder.JpaPagingItemReaderBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
-
-import java.lang.annotation.Target;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -35,17 +32,17 @@ public class JpaPageJobDBWriterConfig {
     @Bean
     public Job jpaPageJobDBWriterBatchBuild() {
         return new JobBuilder("jpaPageJobDBWriterBatchBuild", jobRepository)
-                .start(jpaPageJobDBWriterStepOne())
+                .start(jpaPageJobDBWriterStep())
                 .build();
     }
 
     @Bean
-    public Step jpaPageJobDBWriterStepOne() {
+    public Step jpaPageJobDBWriterStep() {
         return new StepBuilder("jpaPageJobDBWriterStepOne", jobRepository)
                 .<Dept, TargetDept>chunk(chunkSize, transactionManager)
                 .reader(jpaPageJobDBWriterItemReader())
                 .processor(jpaPageJobDBItemWriterProcessor())
-                .writer(jpaPageJobDBItemWriter())
+                .writer(jpaPageJobDBWriterItemWriter())
                 .build();
     }
 
@@ -66,9 +63,11 @@ public class JpaPageJobDBWriterConfig {
     }
 
     @Bean
-    public JpaItemWriter<TargetDept> jpaPageJobDBItemWriter() {
+    public JpaItemWriter<TargetDept> jpaPageJobDBWriterItemWriter() {
+
         JpaItemWriter<TargetDept> jpaItemWriter = new JpaItemWriter<>();
         jpaItemWriter.setEntityManagerFactory(entityManagerFactory);
+
         return jpaItemWriter;
     }
 }
