@@ -1,7 +1,7 @@
 package com.spring.batch.domain;
 
-import com.spring.batch.db.domain.Dept;
-import com.spring.batch.db.domain.DeptRepository;
+import com.spring.batch.common.domain.Dept;
+import com.spring.batch.common.domain.DeptRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

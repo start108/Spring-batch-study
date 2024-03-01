@@ -1,4 +1,4 @@
-package com.spring.batch.db.domain;
+package com.spring.batch.common.domain;
 
 import org.springframework.data.repository.CrudRepository;
 

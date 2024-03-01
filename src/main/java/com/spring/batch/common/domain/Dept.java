@@ -1,4 +1,4 @@
-package com.spring.batch.db.domain;
+package com.spring.batch.common.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -10,7 +10,7 @@ import lombok.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class TargetDept {
+public class Dept {
 
     @Id
     Integer deptNo;

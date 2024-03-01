@@ -1,4 +1,4 @@
-package com.spring.batch.csv.dto;
+package com.spring.batch.common.dto;
 
 import lombok.*;
 

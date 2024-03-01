@@ -1,7 +1,7 @@
 package com.spring.batch.csv;
 
 import com.spring.batch.csv.custom.CustomBeanWrapperFieldExtractor;
-import com.spring.batch.csv.dto.CsvFileDto;
+import com.spring.batch.common.dto.CsvFileDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;

@@ -1,7 +1,7 @@
 package com.spring.batch.text;
 
 import com.spring.batch.text.custom.CustomPassThroughtLineAggregator;
-import com.spring.batch.text.dto.TextFileDto;
+import com.spring.batch.common.dto.TextFileDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;

@@ -1,6 +1,6 @@
 package com.spring.batch.db.jpa;
 
-import com.spring.batch.db.domain.Dept;
+import com.spring.batch.common.domain.Dept;
 import jakarta.persistence.EntityManagerFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,6 @@ public class JpaPageJobDBPrintConfig {
     private final JobRepository jobRepository;
     private final PlatformTransactionManager transactionManager;
     private final EntityManagerFactory entityManagerFactory;
-
     private static final int chunkSize = 10;
 
     @Bean

@@ -1,4 +1,4 @@
-package com.spring.batch.text.dto;
+package com.spring.batch.common.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
