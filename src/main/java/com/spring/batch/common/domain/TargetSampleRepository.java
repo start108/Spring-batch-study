@@ -2,5 +2,5 @@ package com.spring.batch.common.domain;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface TargetDeptRepository extends CrudRepository<TargetDept, Long> {
+public interface TargetSampleRepository extends CrudRepository<TargetSample, Long> {
 }
